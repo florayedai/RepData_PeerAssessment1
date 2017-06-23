@@ -1,10 +1,3 @@
----
-title: knit2html(spin("PA1_template.Rmd", knit = FALSE), force_v1 = TRUE)
-author: "Flora Ye"
-date: "June 22, 2017"
-output: html_document
-keep_md: true
----
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -90,7 +83,7 @@ median(totalSteps2$total.steps, na.rm = TRUE)
 ```
 These new mean and median values are larger than those estimates from the first part of the assignment. In the data, there are 2304 missing data out of a total 17568, and the percentage is 13% which is way bigger than a safe maximum threshold of 5% of the total for large datasets. So it is better to impute the missing data. Comparing the histograms of original and imputed data, we can see that the imputed data has a distribution which is less skewed and closer to normal distribution. 
 
-##5. Are there differences in activity patterns between weekdays and weekends?
+## 5. Are there differences in activity patterns between weekdays and weekends?
 ### 5.1 Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
 ```{r}
 newdata$tag <- "weekday"
@@ -104,3 +97,5 @@ new2 <- summarise(group_by(newdata, interval, tag), avgSteps = mean(steps))
 xyplot(avgSteps~interval | tag, data= new2, layout=c(1,2), type='l', 
        xlab = "Interval", ylab = "Average number of steps")
 ```
+```
+

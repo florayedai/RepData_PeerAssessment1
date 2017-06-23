@@ -1,22 +1,5 @@
 
 
-```r
----
-title: "Reproducible Research: Peer Assessment 1"
-author: "Flora Ye"
-date: "June 22, 2017"
-output: html_document
-keep_md: true
----
-```
-
-```
-## Error: <text>:9:0: unexpected end of input
-## 7: ---
-## 8: 
-##   ^
-```
-
 
 ## 1. Loading and preprocessing the data
 
@@ -43,7 +26,7 @@ totalSteps <- summarise(group_by(activityData, date), total.steps = sum(steps, n
 hist(totalSteps$total.steps, xlab = "total steps", main = "Total number of steps taken each day", ylim = c(0,40))
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
 
 ### 2.3 Calculate and report the mean and median of the total number of steps taken per day
 
@@ -73,7 +56,7 @@ stepsByInterval <- summarise(group_by(activityData, interval), avg.steps = mean(
 plot(stepsByInterval$interval, stepsByInterval$avg.steps, type = "l", xlab = "Interval", ylab = "Average steps", main = "Time series plot of the average number of steps taken")
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
 
 ### 3.2 Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -135,7 +118,7 @@ totalSteps2 <- summarise(group_by(newdata, date), total.steps = sum(steps, na.rm
 hist(totalSteps2$total.steps, xlab = "total steps", main = "Total number of steps taken each day with missing data filled in.", ylim = c(0,40))
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png)
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png)
 
 ### 4.5  Calculate and report the mean and median total number of steps taken per day for the new dataset. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
@@ -156,7 +139,7 @@ median(totalSteps2$total.steps, na.rm = TRUE)
 ```
 These new mean and median values are larger than those estimates from the first part of the assignment. In the data, there are 2304 missing data out of a total 17568, and the percentage is 13% which is way bigger than a safe maximum threshold of 5% of the total for large datasets. So it is better to impute the missing data. Comparing the histograms of original and imputed data, we can see that the imputed data has a distribution which is less skewed and closer to normal distribution. 
 
-##5. Are there differences in activity patterns between weekdays and weekends?
+## 5. Are there differences in activity patterns between weekdays and weekends?
 ### 5.1 Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
 
 ```r
@@ -173,6 +156,6 @@ xyplot(avgSteps~interval | tag, data= new2, layout=c(1,2), type='l',
        xlab = "Interval", ylab = "Average number of steps")
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
 ```
 
